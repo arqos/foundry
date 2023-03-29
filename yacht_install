@@ -1,0 +1,56 @@
+{
+  "type": 1,
+  "title": "Foundry",
+  "name": "foundry",
+  "description": "VTT for RPGs.",
+  "logo": "https://foundryvtt.com/static/assets/icons/fvtt.png",
+  "image": "https://foundryvtt.s3.amazonaws.com/releases/10.291/FoundryVTT-10.291-Setup.exe?AWSAccessKeyId=AKIA2KJE5YZ3BCQQ6DH3&Signature=MgDupTB%2BKvefRIyQa%2F9blsmr6I4%3D&Expires=1680090767",
+  "note": "This is a note",
+  "categories": [
+    "Other",
+    "Tools"
+  ],
+  "platform": "linux",
+  "restart_policy": "unless-stopped",
+  "ports": [
+    "30000:30000/tcp",
+    "30000:30000/tcp"
+  ],
+  "network_mode": "bridge",
+  "volumes": [
+    {
+      "container": "/data",
+      "bind": "!downloads"
+    },
+    {
+      "container": "/etc/localtime",
+      "bind": "!localtime"
+    }
+  ],
+  "sysctls": [
+    {
+    "net.ipv6.conf.all.disable_ipv6": "0"
+    }
+  ],
+  "cap_add": [
+    "NET_ADMIN"
+  ],
+  "env": [
+    {
+      "name": "PUID",
+      "label": "PUID",
+      "default": "1000"
+    },
+    {
+      "name": "PGID",
+      "label": "PGID",
+      "default": "1000"
+    },
+    {
+      "name": "EnvWithDescription",
+      "label": "EnvWithDescription",
+      "description": "This is a description",
+      "default": "default"
+    }
+  ]
+}
